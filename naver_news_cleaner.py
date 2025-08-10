@@ -1,5 +1,6 @@
 
 import re
+import json
 import requests
 import urllib.parse
 import html
@@ -165,28 +166,46 @@ def clean_text(text):
     # 6) 제어문자 제거
     t = re.sub(r'[\t\r]', ' ', t) # \t, \r 중 하나
 
-    # 7) 연속 공백/개행 통일
+    # 7) 추가 정규화
+    t = re.sub(r'\b네이버뉴스\b', '', t)
+    t = re.sub(r'[\w\.-]+@[\w\.-]+', '', t)
+    t = re.sub(r'(사진=?|=사진|/사진)', '', t)
+
+    # 8) 연속 공백/개행 통일
     t = re.sub(r'\n{3,}', '\n\n', t) # \n이 3번 이상 반복하면 \n\n으로 치환
     t = re.sub(r' {2,}', ' ', t) # 공백이 2번 이상 반복하면 공백 1칸으로 치환
 
-    # 8) strip (공백 제거)
+    # 9) strip (공백 제거)
     return t.strip()
 
 
 
 
-
-def save_articles_to_txt(keyword: str, output_path: str, pages: int = 5):
+# 몇개의 데이터가 저장되었는지 반환한다.
+def save_articles_to_jsonl(keyword: str, output_path: str, pages: int = 5):
+    """
+      (이전: TXT 저장) → (변경: JSONL 저장)
+      한 줄에 하나의 JSON 객체를 기록: {"title": "...", "body": "..."}
+      Hugging Face datasets.load_dataset("json", data_files=..., split="train")로 바로 로드 가능.
+      반환값: 실제로 기록된 레코드 수
+    """
     links = fetch_search_links(keyword, pages) # 제공받은 키워드, 페이지 수로 기사 제목, 링크 가져옴
+    
+    written = 0
     with open(output_path, "w", encoding="utf-8") as f:
-        for i, (title, href) in enumerate(links, 1): # 몇번째 기사인지 붙여주기 위해 enumerate 함수로 각 요소에 순번 부여
-            body = fetch_article_body(href)
-            clean_title = clean_text(title)
-            clean_body = clean_text(body)
+      for title, href in links:
+        try:
+          body = fetch_article_body(href)
+        except Exception:# 개별 기사 parsing 실패는 건너뛰도록 설정
+          continue
 
-            f.write(f"### 기사 {i}\n")
-            f.write(clean_title + "\n\n")
-            f.write(clean_body + "\n")
-            f.write("=" * 80 + "\n\n")
-    return len(links)
+        clean_title = clean_text(title)
+        clean_body = clean_text(body)
+
+        j = {"title": clean_title, "body": clean_body}
+        f.write(json.dumps(j, ensure_ascii=False))
+        f.write("\n")
+        written += 1
+
+    return written
 
