@@ -3,7 +3,7 @@
   "citation": "",
   "config_name": "default",
   "dataset_name": "json",
-  "dataset_size": 1106445,
+  "dataset_size": 2821080,
   "description": "",
   "download_checksums": {
     "/content/drive/MyDrive/DILAB/HJ/News_DILAB/news_data/news_articles_2025-08-01.jsonl": {
@@ -45,9 +45,65 @@
     "/content/drive/MyDrive/DILAB/HJ/News_DILAB/news_data/news_articles_2025-08-10.jsonl": {
       "num_bytes": 115129,
       "checksum": null
+    },
+    "/content/drive/MyDrive/DILAB/HJ/News_DILAB/news_data/news_articles_2025-08-11.jsonl": {
+      "num_bytes": 89254,
+      "checksum": null
+    },
+    "/content/drive/MyDrive/DILAB/HJ/News_DILAB/news_data/news_articles_2025-08-12.jsonl": {
+      "num_bytes": 92068,
+      "checksum": null
+    },
+    "/content/drive/MyDrive/DILAB/HJ/News_DILAB/news_data/news_articles_2025-08-13.jsonl": {
+      "num_bytes": 83141,
+      "checksum": null
+    },
+    "/content/drive/MyDrive/DILAB/HJ/News_DILAB/news_data/news_articles_2025-08-14.jsonl": {
+      "num_bytes": 111731,
+      "checksum": null
+    },
+    "/content/drive/MyDrive/DILAB/HJ/News_DILAB/news_data/news_articles_2025-08-15.jsonl": {
+      "num_bytes": 130748,
+      "checksum": null
+    },
+    "/content/drive/MyDrive/DILAB/HJ/News_DILAB/news_data/news_articles_2025-08-16.jsonl": {
+      "num_bytes": 121107,
+      "checksum": null
+    },
+    "/content/drive/MyDrive/DILAB/HJ/News_DILAB/news_data/news_articles_2025-08-17.jsonl": {
+      "num_bytes": 144661,
+      "checksum": null
+    },
+    "/content/drive/MyDrive/DILAB/HJ/News_DILAB/news_data/news_articles_2025-08-18.jsonl": {
+      "num_bytes": 137526,
+      "checksum": null
+    },
+    "/content/drive/MyDrive/DILAB/HJ/News_DILAB/news_data/news_articles_2025-08-19.jsonl": {
+      "num_bytes": 151014,
+      "checksum": null
+    },
+    "/content/drive/MyDrive/DILAB/HJ/News_DILAB/news_data/news_articles_2025-08-20.jsonl": {
+      "num_bytes": 136056,
+      "checksum": null
+    },
+    "/content/drive/MyDrive/DILAB/HJ/News_DILAB/news_data/news_articles_2025-08-21.jsonl": {
+      "num_bytes": 153669,
+      "checksum": null
+    },
+    "/content/drive/MyDrive/DILAB/HJ/News_DILAB/news_data/news_articles_2025-08-22.jsonl": {
+      "num_bytes": 151951,
+      "checksum": null
+    },
+    "/content/drive/MyDrive/DILAB/HJ/News_DILAB/news_data/news_articles_2025-08-23.jsonl": {
+      "num_bytes": 120623,
+      "checksum": null
+    },
+    "/content/drive/MyDrive/DILAB/HJ/News_DILAB/news_data/news_articles_2025-08-24.jsonl": {
+      "num_bytes": 115237,
+      "checksum": null
     }
   },
-  "download_size": 1117890,
+  "download_size": 2856676,
   "features": {
     "text": {
       "dtype": "string",
@@ -70,12 +126,12 @@
   },
   "homepage": "",
   "license": "",
-  "size_in_bytes": 2224335,
+  "size_in_bytes": 5677756,
   "splits": {
     "train": {
       "name": "train",
-      "num_bytes": 1106445,
-      "num_examples": 312,
+      "num_bytes": 2821080,
+      "num_examples": 836,
       "dataset_name": "json"
     }
   },
